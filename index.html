@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f766e">
+  <title>PWA Geo Modular</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icons/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <p class="eyebrow">Tema 6.3 · Geolocalización consciente</p>
+      <h1>Reporte con ubicación reutilizable</h1>
+      <p class="lead">Solicita coordenadas con consentimiento previo, evalúa precisión y ofrece un plan B manual.</p>
+    </header>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Ubicación del reporte</h2>
+        <p id="statusText" class="status">Listo para solicitar ubicación bajo demanda.</p>
+      </div>
+
+      <div class="actions">
+        <button id="btnAdjuntar" class="btn btn-primary" type="button">Adjuntar mi ubicación</button>
+        <button id="btnLimpiar" class="btn btn-ghost" type="button">Limpiar</button>
+      </div>
+
+      <div id="prepermisoCard" class="panel hidden" aria-live="polite">
+        <h3>¿Por qué solicitamos tu ubicación?</h3>
+        <p>Usaremos tu ubicación aproximada para adjuntar coordenadas al reporte técnico y mostrar la calidad de la señal. Solo se solicita cuando tú lo confirmas.</p>
+        <div class="actions">
+          <button id="btnConfirmarUbicacion" class="btn btn-primary" type="button">Compartir mi ubicación</button>
+          <button id="btnCancelarPrepermiso" class="btn btn-ghost" type="button">Ahora no</button>
+        </div>
+      </div>
+
+      <div id="resultado" class="panel hidden" aria-live="polite"></div>
+
+      <div id="manualPanel" class="panel hidden">
+        <h3>Plan B: captura manual de zona</h3>
+        <p id="manualHelp" class="muted">Si no se puede obtener tu ubicación, selecciona tu zona manualmente.</p>
+        <label class="field" for="zonaManual">
+          <span>Zona / ciudad</span>
+          <select id="zonaManual">
+            <option value="">Selecciona una zona</option>
+            <option value="Centro">Centro</option>
+            <option value="Norte">Norte</option>
+            <option value="Sur">Sur</option>
+            <option value="Oriente">Oriente</option>
+            <option value="Poniente">Poniente</option>
+            <option value="Otra">Otra</option>
+          </select>
+        </label>
+        <label class="field" for="detalleManual">
+          <span>Detalle opcional</span>
+          <input id="detalleManual" type="text" placeholder="Ej. Campus, colonia, referencia">
+        </label>
+        <button id="btnGuardarManual" class="btn btn-secondary" type="button">Guardar zona manual</button>
+        <p id="manualResultado" class="manual-result"></p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Prueba en laptop y móvil para comparar <code>coords.accuracy</code>. Permisos aislados en iOS PWA.</p>
+    </footer>
+  </main>
+
+  <script src="./geo-helper.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
