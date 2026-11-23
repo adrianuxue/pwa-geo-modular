@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pwa-geo-modular-v1';
+const CACHE_NAME = 'pwa-geo-modular-v2';
 const APP_SHELL = [
   './',
   './index.html',
@@ -7,7 +7,8 @@ const APP_SHELL = [
   './app.js',
   './manifest.json',
   './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './icons/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', (event) => {
